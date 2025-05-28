@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook - Log In or Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Desktop Layout -->
+  <div class="desktop-layout d-none d-lg-block">
+    <div class="container-fluid vh-100">
+      <div class="row h-100 align-items-center">
+        <!-- Left Column - Logo and Tagline -->
+        <div class="col-lg-6">
+          <div class="ps-5 pe-4">
+            <div class="facebook-logo-text mb-4">facebook</div>
+            <h2 class="tagline">Facebook helps you connect and share with the people in your life.</h2>
+          </div>
+        </div>
+        
+        <!-- Right Column - Login Form -->
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-start ps-4">
+            <div class="login-card">
+              <div class="card shadow">
+                <div class="card-body p-4">
+                  <form id="desktop-login-form">
+                    <div class="mb-3">
+                      <input id="desktop-email" type="text" class="form-control form-control-lg" placeholder="Email address or phone number" name="email">
+                      <small id="desktop-email-error" class="text-danger d-block mt-1"></small>
+                    </div>
+                    <div class="mb-3">
+                      <input id="desktop-password" type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+                      <small id="desktop-password-error" class="text-danger d-block mt-1"></small>
+                    </div>
+                    <div class="d-grid mb-3">
+                      <button type="submit" class="btn btn-primary btn-lg login-btn">Log In</button>
+                    </div>
+                    <div class="text-center mb-4">
+                      <a href="#" class="forgot-link">Forgotten password?</a>
+                    </div>
+                    <hr class="my-4">
+                    <div class="text-center">
+                      <button type="button" class="btn btn-success btn-lg create-btn">Create New Account</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="text-center mt-4">
+                <p class="create-page-text"><strong>Create a Page</strong> for a celebrity, brand or business.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Layout -->
+  <div class="mobile-layout d-block d-lg-none">
+    <div class="container-fluid">
+      <!-- Mobile Header with Logo -->
+      <div class="mobile-header text-center py-4">
+        <div class="facebook-logo-mobile">facebook</div>
+      </div>
+      
+      <!-- Mobile Login Form -->
+      <div class="mobile-form-container px-3">
+        <div class="mobile-card">
+          <form id="mobile-login-form">
+            <div class="mb-3">
+              <input id="mobile-email" type="text" class="form-control form-control-lg" placeholder="Mobile number or email address" name="email">
+              <small id="mobile-email-error" class="text-danger d-block mt-1"></small>
+            </div>
+            <div class="mb-3">
+              <input id="mobile-password" type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+              <small id="mobile-password-error" class="text-danger d-block mt-1"></small>
+            </div>
+            <div class="d-grid mb-3">
+              <button type="submit" class="btn btn-primary btn-lg login-btn">Log In</button>
+            </div>
+            <div class="text-center mb-4">
+              <a href="#" class="forgot-link">Forgotten password?</a>
+            </div>
+          </form>
+        </div>
+        
+        <div class="mobile-divider my-4">
+          <span>or</span>
+        </div>
+        
+        <div class="text-center mb-4">
+          <button type="button" class="btn btn-success btn-lg create-btn-mobile">Create New Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer bg-white py-3 mt-auto">
+    <div class="container">
+      <!-- Language Links -->
+      <div class="language-links mb-2">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+          <a href="#" class="me-3 mb-1">English (US)</a>
+          <a href="#" class="me-3 mb-1">Español</a>
+          <a href="#" class="me-3 mb-1">Français (France)</a>
+          <a href="#" class="me-3 mb-1">中文(简体)</a>
+          <a href="#" class="me-3 mb-1">العربية</a>
+          <a href="#" class="me-3 mb-1">Português (Brasil)</a>
+          <a href="#" class="me-3 mb-1">Italiano</a>
+          <a href="#" class="me-3 mb-1">한국어</a>
+          <a href="#" class="me-3 mb-1">Deutsch</a>
+          <a href="#" class="me-3 mb-1">हिन्दी</a>
+          <a href="#" class="me-3 mb-1">日本語</a>
+        </div>
+      </div>
+      
+      <hr class="my-2">
+      
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+          <a href="#" class="me-3 mb-1">Sign Up</a>
+          <a href="#" class="me-3 mb-1">Log In</a>
+          <a href="#" class="me-3 mb-1">Messenger</a>
+          <a href="#" class="me-3 mb-1">Facebook Lite</a>
+          <a href="#" class="me-3 mb-1">Watch</a>
+          <a href="#" class="me-3 mb-1">Places</a>
+          <a href="#" class="me-3 mb-1">Games</a>
+          <a href="#" class="me-3 mb-1">Marketplace</a>
+          <a href="#" class="me-3 mb-1">Meta Pay</a>
+          <a href="#" class="me-3 mb-1">Meta Store</a>
+          <a href="#" class="me-3 mb-1">Meta Quest</a>
+          <a href="#" class="me-3 mb-1">Instagram</a>
+          <a href="#" class="me-3 mb-1">Threads</a>
+        </div>
+      </div>
+      
+      <div class="copyright mt-3 text-center text-lg-start">
+        <small class="text-muted">Meta © 2025</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
